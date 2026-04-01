@@ -1,0 +1,61 @@
+---
+import "../styles/global.css";
+const pageTitle = "About Me";
+const name = "Chris Smith";
+const school = "Fort Lewis College";
+const major = "Computer Information Systems";
+const interests = ["IT", "fitness", "business", "data analytics"];
+const graduated = false;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+    </nav>
+
+    <h1>{pageTitle}</h1>
+    <p>My name is {name}.</p>
+    <p>I attend {school} and my major is {major}.</p>
+
+    <h2>My Interests</h2>
+    <ul>
+      {interests.map((interest) => <li>{interest}</li>)}
+    </ul>
+
+    {graduated ? <p>I have already graduated.</p> : <p>I am still working toward graduation.</p>}
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  nav a {
+    margin-right: 12px;
+    text-decoration: none;
+  }
+
+  h1 {
+    color: darkblue;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  ul {
+    background: #f4f4f4;
+    padding: 15px 30px;
+    border-radius: 8px;
+  }
+</style>
