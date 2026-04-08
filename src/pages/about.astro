@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 const pageTitle = "About Me";
 const name = "Chris Smith";
 const school = "Fort Lewis College";
@@ -7,55 +10,40 @@ const major = "Computer Information Systems";
 const interests = ["IT", "fitness", "business", "data analytics"];
 const graduated = false;
 ---
-<html lang="en">
+
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
   </head>
   <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/blog">Blog</a>
-    </nav>
+    <Header />
 
     <h1>{pageTitle}</h1>
+
     <p>My name is {name}.</p>
-    <p>I attend {school} and my major is {major}.</p>
+    <p>I go to {school} and study {major}.</p>
 
     <h2>My Interests</h2>
     <ul>
-      {interests.map((interest) => <li>{interest}</li>)}
+      {interests.map((i) => <li>{i}</li>)}
     </ul>
 
-    {graduated ? <p>I have already graduated.</p> : <p>I am still working toward graduation.</p>}
+    {graduated 
+      ? <p>I have graduated.</p> 
+      : <p>I am still in school.</p>}
+
+    <Footer />
   </body>
 </html>
 
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-  }
-
-  nav a {
-    margin-right: 12px;
-    text-decoration: none;
-  }
-
   h1 {
     color: darkblue;
   }
 
-  p {
-    line-height: 1.6;
-  }
-
   ul {
-    background: #f4f4f4;
-    padding: 15px 30px;
+    background: #eee;
+    padding: 10px;
     border-radius: 8px;
   }
 </style>

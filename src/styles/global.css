@@ -3,6 +3,11 @@ body {
   max-width: 800px;
   margin: auto;
   padding: 20px;
+  line-height: 1.6;
+}
+
+header {
+  margin-bottom: 20px;
 }
 
 nav {
@@ -10,9 +15,10 @@ nav {
 }
 
 nav a {
-  margin-right: 10px;
+  margin-right: 12px;
   text-decoration: none;
   color: black;
+  font-weight: 500;
 }
 
 nav a:hover {
@@ -21,4 +27,45 @@ nav a:hover {
 
 h1 {
   font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+}
+
+footer a {
+  margin-right: 12px;
+  text-decoration: none;
+  color: black;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.menu {
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#main-menu {
+  display: block;
+}
+
+#main-menu.open {
+  display: block;
 }
