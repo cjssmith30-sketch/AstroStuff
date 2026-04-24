@@ -1,7 +1,5 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
 const name = "Chris Smith";
@@ -11,30 +9,19 @@ const interests = ["IT", "fitness", "business", "data analytics"];
 const graduated = false;
 ---
 
-<html>
-  <head>
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <Header />
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
 
-    <h1>{pageTitle}</h1>
+  <p>My name is {name}.</p>
+  <p>I go to {school} and study {major}.</p>
 
-    <p>My name is {name}.</p>
-    <p>I go to {school} and study {major}.</p>
+  <h2>My Interests</h2>
+  <ul>
+    {interests.map((i) => <li>{i}</li>)}
+  </ul>
 
-    <h2>My Interests</h2>
-    <ul>
-      {interests.map((i) => <li>{i}</li>)}
-    </ul>
-
-    {graduated 
-      ? <p>I have graduated.</p> 
-      : <p>I am still in school.</p>}
-
-    <Footer />
-  </body>
-</html>
+  {graduated ? <p>I have graduated.</p> : <p>I am still in school.</p>}
+</BaseLayout>
 
 <style>
   h1 {

@@ -1,0 +1,60 @@
+---
+import "../../styles/global.css";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const posts = Object.entries(
+    import.meta.glob("../posts/*.md", { eager: true })
+  );
+
+  const tags = [
+    ...new Set(posts.flatMap(([path, post]) => post.frontmatter.tags || [])),
+  ];
+
+  return tags.map((tag) => ({
+    params: { tag },
+  }));
+}
+
+const { tag } = Astro.params;
+
+const posts = Object.entries(
+  import.meta.glob("../posts/*.md", { eager: true })
+)
+  .map(([path, post]) => {
+    const slug = path.split("/").pop().replace(".md", "");
+
+    return {
+      slug,
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      tags: post.frontmatter.tags || [],
+    };
+  })
+  .filter((post) => post.tags.includes(tag));
+---
+
+<html>
+  <head>
+    <title>Posts tagged {tag}</title>
+  </head>
+  <body>
+    <Header />
+
+    <h1>Posts tagged: {tag}</h1>
+
+    <ul>
+      {posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.slug}`}>{post.title}</a>
+          <p>{post.description}</p>
+        </li>
+      ))}
+    </ul>
+
+    <p><a href="/tags">View all tags</a></p>
+
+    <Footer />
+  </body>
+</html>
